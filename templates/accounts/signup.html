@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up - MindCheck{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <div>
+            <div class="mx-auto h-12 w-12 bg-teal-600 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold text-xl">M</span>
+            </div>
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                Create your account
+            </h2>
+            <p class="mt-2 text-center text-sm text-gray-600">
+                Or
+                <a href="{% url 'accounts:login' %}" class="font-medium text-teal-600 hover:text-teal-500">
+                    sign in to your existing account
+                </a>
+            </p>
+        </div>
+        
+        <form class="mt-8 space-y-6" method="post">
+            {% csrf_token %}
+            
+            <div class="space-y-4">
+                <div>
+                    <label for="{{ form.username.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                        Username
+                    </label>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                        <div class="text-red-600 text-sm mt-1">
+                            {% for error in form.username.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div>
+                    <label for="{{ form.first_name.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                        First Name
+                    </label>
+                    {{ form.first_name }}
+                    {% if form.first_name.errors %}
+                        <div class="text-red-600 text-sm mt-1">
+                            {% for error in form.first_name.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div>
+                    <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                        Last Name
+                    </label>
+                    {{ form.last_name }}
+                    {% if form.last_name.errors %}
+                        <div class="text-red-600 text-sm mt-1">
+                            {% for error in form.last_name.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div>
+                    <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                        Email Address
+                    </label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="text-red-600 text-sm mt-1">
+                            {% for error in form.email.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div>
+                    <label for="{{ form.password1.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                        Password
+                    </label>
+                    {{ form.password1 }}
+                    {% if form.password1.errors %}
+                        <div class="text-red-600 text-sm mt-1">
+                            {% for error in form.password1.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div>
+                    <label for="{{ form.password2.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                        Confirm Password
+                    </label>
+                    {{ form.password2 }}
+                    {% if form.password2.errors %}
+                        <div class="text-red-600 text-sm mt-1">
+                            {% for error in form.password2.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="flex items-center">
+                    {{ form.privacy_consent }}
+                    <label for="{{ form.privacy_consent.id_for_label }}" class="ml-2 block text-sm text-gray-900">
+                        I agree to the <a href="#" class="text-teal-600 hover:text-teal-500">Privacy Policy</a>
+                    </label>
+                </div>
+                {% if form.privacy_consent.errors %}
+                    <div class="text-red-600 text-sm">
+                        {% for error in form.privacy_consent.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                <div class="flex items-center">
+                    {{ form.data_processing_consent }}
+                    <label for="{{ form.data_processing_consent.id_for_label }}" class="ml-2 block text-sm text-gray-900">
+                        I consent to the processing of my data for assessment purposes
+                    </label>
+                </div>
+                {% if form.data_processing_consent.errors %}
+                    <div class="text-red-600 text-sm">
+                        {% for error in form.data_processing_consent.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div>
+                <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                    Create Account
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

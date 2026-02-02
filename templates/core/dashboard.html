@@ -1,0 +1,510 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard - WellNest{% endblock %}
+
+{% block content %}
+<div class="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- Hero Section -->
+        <div class="text-center mb-10 animate-fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-3">
+                Welcome back, {{ user.first_name|default:user.username }}! 🌱
+            </h1>
+            <p class="text-lg text-gray-600">
+                Here's your personalized wellness dashboard 🌱
+            </p>
+        </div>
+
+        <!-- Mental Health Videos Section -->
+        <div class="bg-white/80 rounded-2xl shadow-md p-6 mb-8 border border-green-100 hover:shadow-lg transition-all duration-300">
+            <h2 class="text-xl font-semibold flex items-center gap-2 text-green-700 mb-6">
+                🎬 Mental Health Videos
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Video 1: Overcoming Anxiety -->
+                <a href="https://www.youtube.com/watch?v=WWloIAQpMcQ" target="_blank" class="block relative group">
+                    <div class="relative rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
+                        <img src="https://img.youtube.com/vi/WWloIAQpMcQ/0.jpg" 
+                             alt="Overcoming Anxiety"
+                             class="w-full h-48 object-cover group-hover:opacity-90 transition-opacity duration-300">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-20">
+                            <div class="bg-white px-6 py-3 rounded-xl font-semibold text-green-700 shadow-lg flex items-center gap-2">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                                Watch Video
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <h3 class="font-semibold text-gray-800 mb-1">Overcoming Anxiety</h3>
+                        <p class="text-gray-600 text-sm">Practical strategies to manage anxiety and find calm</p>
+                    </div>
+                </a>
+
+                <!-- Video 2: Mindfulness for Beginners -->
+                <a href="https://www.youtube.com/watch?v=inpok4MKVLM" target="_blank" class="block relative group">
+                    <div class="relative rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
+                        <img src="https://img.youtube.com/vi/inpok4MKVLM/0.jpg" 
+                             alt="Mindfulness for Beginners"
+                             class="w-full h-48 object-cover group-hover:opacity-90 transition-opacity duration-300">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-20">
+                            <div class="bg-white px-6 py-3 rounded-xl font-semibold text-green-700 shadow-lg flex items-center gap-2">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                                Watch Video
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <h3 class="font-semibold text-gray-800 mb-1">Mindfulness for Beginners</h3>
+                        <p class="text-gray-600 text-sm">10-minute guided meditation for stress relief and mental clarity</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Latest Articles Section -->
+        <div class="bg-white/80 rounded-2xl shadow-md p-6 mb-8 border border-green-100 hover:shadow-lg transition-all duration-300">
+            <h2 class="text-xl font-semibold flex items-center gap-2 text-green-700 mb-6">
+                📰 Latest Articles
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Article 1 -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-300 border border-green-100">
+                    <div class="w-full h-32 bg-gradient-to-br from-green-200 to-emerald-200 rounded-lg mb-4 flex items-center justify-center">
+                        <span class="text-4xl">🧘</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Managing Anxiety in Daily Life</h3>
+                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">Discover practical techniques to manage anxiety and find peace in your everyday routine.</p>
+                    <a href="#" class="text-green-600 hover:text-green-700 text-sm font-medium inline-flex items-center gap-1">
+                        Read More →
+                    </a>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-300 border border-green-100">
+                    <div class="w-full h-32 bg-gradient-to-br from-green-200 to-emerald-200 rounded-lg mb-4 flex items-center justify-center">
+                        <span class="text-4xl">✨</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Power of Positive Thinking</h3>
+                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">Learn how positive thinking can transform your mental health and overall well-being.</p>
+                    <a href="#" class="text-green-600 hover:text-green-700 text-sm font-medium inline-flex items-center gap-1">
+                        Read More →
+                    </a>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-300 border border-green-100">
+                    <div class="w-full h-32 bg-gradient-to-br from-green-200 to-emerald-200 rounded-lg mb-4 flex items-center justify-center">
+                        <span class="text-4xl">🌬️</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Mindful Breathing to Reduce Stress</h3>
+                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">Simple breathing exercises that can help you manage stress and find calm instantly.</p>
+                    <a href="#" class="text-green-600 hover:text-green-700 text-sm font-medium inline-flex items-center gap-1">
+                        Read More →
+                    </a>
+                </div>
+
+                <!-- Article 4 -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-300 border border-green-100">
+                    <div class="w-full h-32 bg-gradient-to-br from-green-200 to-emerald-200 rounded-lg mb-4 flex items-center justify-center">
+                        <span class="text-4xl">🌱</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Building Healthy Habits</h3>
+                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">Start your journey to better mental health with these foundational wellness habits.</p>
+                    <a href="#" class="text-green-600 hover:text-green-700 text-sm font-medium inline-flex items-center gap-1">
+                        Read More →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommended Therapists Section -->
+        <div class="bg-white/80 rounded-2xl shadow-md p-6 mb-8 border border-green-100 hover:shadow-lg transition-all duration-300">
+            <h2 class="text-xl font-semibold flex items-center gap-2 text-green-700 mb-6">
+                🧘 Recommended Therapists
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Therapist 1 -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-all duration-300 border border-green-100 hover:scale-105">
+                    <div class="mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Dr. Ananya Sharma" class="rounded-full w-24 h-24 mx-auto object-cover border-4 border-green-300 shadow-md">
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-1">Dr. Ananya Sharma</h3>
+                    <p class="text-gray-600 text-sm mb-2">Clinical Psychologist</p>
+                    <p class="text-gray-500 text-xs mb-3">8 years experience</p>
+                    <div class="flex items-center justify-center gap-1 mb-4">
+                        <span class="text-yellow-400">★★★★★</span>
+                        <span class="text-xs text-gray-600">4.9</span>
+                    </div>
+                    <button onclick="bookSession('Dr. Ananya Sharma')" 
+                            class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-2 rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-300 shadow-md hover:shadow-lg font-medium">
+                        Book Session ✨
+                    </button>
+                </div>
+
+                <!-- Therapist 2 -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-all duration-300 border border-green-100 hover:scale-105">
+                    <div class="mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="Dr. Rahul Mehta" class="rounded-full w-24 h-24 mx-auto object-cover border-4 border-green-300 shadow-md">
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-1">Dr. Rahul Mehta</h3>
+                    <p class="text-gray-600 text-sm mb-2">Cognitive Behavioral Therapist</p>
+                    <p class="text-gray-500 text-xs mb-3">5 years experience</p>
+                    <div class="flex items-center justify-center gap-1 mb-4">
+                        <span class="text-yellow-400">★★★★☆</span>
+                        <span class="text-xs text-gray-600">4.7</span>
+                    </div>
+                    <button onclick="bookSession('Dr. Rahul Mehta')" 
+                            class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-2 rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-300 shadow-md hover:shadow-lg font-medium">
+                        Book Session ✨
+                    </button>
+                </div>
+
+                <!-- Therapist 3 -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-all duration-300 border border-green-100 hover:scale-105">
+                    <div class="mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/48.jpg" alt="Dr. Priya Menon" class="rounded-full w-24 h-24 mx-auto object-cover border-4 border-green-300 shadow-md">
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-1">Dr. Priya Menon</h3>
+                    <p class="text-gray-600 text-sm mb-2">Child Psychologist</p>
+                    <p class="text-gray-500 text-xs mb-3">6 years experience</p>
+                    <div class="flex items-center justify-center gap-1 mb-4">
+                        <span class="text-yellow-400">★★★★☆</span>
+                        <span class="text-xs text-gray-600">4.8</span>
+                    </div>
+                    <button onclick="bookSession('Dr. Priya Menon')" 
+                            class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-2 rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-300 shadow-md hover:shadow-lg font-medium">
+                        Book Session ✨
+                    </button>
+                </div>
+
+                <!-- Therapist 4 -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-all duration-300 border border-green-100 hover:scale-105">
+                    <div class="mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/60.jpg" alt="Dr. Sameer Verma" class="rounded-full w-24 h-24 mx-auto object-cover border-4 border-green-300 shadow-md">
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-1">Dr. Sameer Verma</h3>
+                    <p class="text-gray-600 text-sm mb-2">Stress Management Expert</p>
+                    <p class="text-gray-500 text-xs mb-3">10 years experience</p>
+                    <div class="flex items-center justify-center gap-1 mb-4">
+                        <span class="text-yellow-400">★★★★★</span>
+                        <span class="text-xs text-gray-600">4.9</span>
+                    </div>
+                    <button onclick="bookSession('Dr. Sameer Verma')" 
+                            class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-2 rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-300 shadow-md hover:shadow-lg font-medium">
+                        Book Session ✨
+                    </button>
+                </div>
+
+                <!-- Therapist 5 -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-all duration-300 border border-green-100 hover:scale-105">
+                    <div class="mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/52.jpg" alt="Dr. Kavita Rao" class="rounded-full w-24 h-24 mx-auto object-cover border-4 border-green-300 shadow-md">
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-1">Dr. Kavita Rao</h3>
+                    <p class="text-gray-600 text-sm mb-2">Mindfulness Coach</p>
+                    <p class="text-gray-500 text-xs mb-3">7 years experience</p>
+                    <div class="flex items-center justify-center gap-1 mb-4">
+                        <span class="text-yellow-400">★★★★☆</span>
+                        <span class="text-xs text-gray-600">4.6</span>
+                    </div>
+                    <button onclick="bookSession('Dr. Kavita Rao')" 
+                            class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-2 rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-300 shadow-md hover:shadow-lg font-medium">
+                        Book Session ✨
+                    </button>
+                </div>
+
+                <!-- Therapist 6 -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-all duration-300 border border-green-100 hover:scale-105">
+                    <div class="mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/49.jpg" alt="Dr. Arjun Nair" class="rounded-full w-24 h-24 mx-auto object-cover border-4 border-green-300 shadow-md">
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-1">Dr. Arjun Nair</h3>
+                    <p class="text-gray-600 text-sm mb-2">Relationship Counselor</p>
+                    <p class="text-gray-500 text-xs mb-3">9 years experience</p>
+                    <div class="flex items-center justify-center gap-1 mb-4">
+                        <span class="text-yellow-400">★★★★☆</span>
+                        <span class="text-xs text-gray-600">4.8</span>
+                    </div>
+                    <button onclick="bookSession('Dr. Arjun Nair')" 
+                            class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-2 rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-300 shadow-md hover:shadow-lg font-medium">
+                        Book Session ✨
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming Sessions Section -->
+        <div class="bg-white/80 rounded-2xl shadow-md p-6 mb-8 border border-green-100 hover:shadow-lg transition-all duration-300">
+            <h2 class="text-xl font-semibold flex items-center gap-2 text-green-700 mb-6">
+                🗓️ Upcoming Sessions
+            </h2>
+            <div id="upcomingSessions" class="space-y-3">
+                {% if upcoming_appointments %}
+                    {% for appointment in upcoming_appointments %}
+                    <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-xl border border-green-200 shadow-sm animate-fade-in">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-semibold text-gray-800 mb-1">🧑‍⚕️ {{ appointment.therapist.name }}</h3>
+                                <p class="text-sm text-gray-600">{{ appointment.appointment_date|date:"F j, Y" }} at {{ appointment.appointment_date|time:"g:i A" }}</p>
+                            </div>
+                            <span class="text-xs px-3 py-1 rounded-full font-medium {% if appointment.status == 'confirmed' %}bg-green-100 text-green-800{% else %}bg-yellow-100 text-yellow-800{% endif %}">
+                                {{ appointment.get_status_display }}
+                            </span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="text-center py-8 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border-2 border-dashed border-green-300">
+                        <p class="text-gray-600 mb-2">No sessions booked yet 🌻</p>
+                        <p class="text-sm text-gray-500">Book a session to begin your journey!</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Schedule a Session Section -->
+        <div class="bg-white/80 rounded-2xl shadow-md p-6 mb-8 border border-green-100 hover:shadow-lg transition-all duration-300">
+            <h2 class="text-xl font-semibold flex items-center gap-2 text-green-700 mb-6">
+                📅 Schedule a Session
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label class="block font-semibold text-gray-800 mb-2">Select Therapist</label>
+                    <select id="therapistSelect" class="w-full px-4 py-3 border-2 border-green-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 bg-white">
+                        <option value="">Choose a therapist...</option>
+                        <option value="Dr. Ananya Sharma">Dr. Ananya Sharma - Clinical Psychologist</option>
+                        <option value="Dr. Rahul Mehta">Dr. Rahul Mehta - Cognitive Behavioral Therapist</option>
+                        <option value="Dr. Priya Menon">Dr. Priya Menon - Child Psychologist</option>
+                        <option value="Dr. Sameer Verma">Dr. Sameer Verma - Stress Management Expert</option>
+                        <option value="Dr. Kavita Rao">Dr. Kavita Rao - Mindfulness Coach</option>
+                        <option value="Dr. Arjun Nair">Dr. Arjun Nair - Relationship Counselor</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold text-gray-800 mb-2">Select Date & Time</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <input type="date" id="sessionDate" class="px-4 py-3 border-2 border-green-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300">
+                        <select id="sessionTime" class="px-4 py-3 border-2 border-green-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300">
+                            <option value="">Select time...</option>
+                            <option value="10:00 AM">10:00 AM</option>
+                            <option value="11:00 AM">11:00 AM</option>
+                            <option value="2:00 PM">2:00 PM</option>
+                            <option value="3:00 PM">3:00 PM</option>
+                            <option value="4:00 PM">4:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button onclick="bookSessionFromForm()" 
+                    class="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-green-700 hover:to-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                Book Session ✨
+            </button>
+        </div>
+
+        <!-- Positive Quote Section -->
+        <div class="text-center mt-8 mb-4">
+            <div class="bg-gradient-to-r from-green-100 via-emerald-100 to-teal-100 p-6 rounded-2xl shadow-md max-w-3xl mx-auto border border-green-200">
+                <p class="text-lg md:text-xl font-medium text-gray-700 leading-relaxed">
+                    Every step you take toward healing counts 🌼 — keep growing.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-fade-in {
+        animation: fadeIn 0.8s ease-out;
+    }
+    
+    .animate-slide-up {
+        animation: slideUp 0.6s ease-out;
+    }
+    
+    .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function bookSession(therapistName) {
+        const list = document.getElementById("upcomingSessions");
+        
+        // Remove the "no sessions" message if it exists
+        const noSessionsMsg = list.querySelector('.text-center');
+        if (noSessionsMsg && noSessionsMsg.textContent.includes('No sessions booked')) {
+            noSessionsMsg.remove();
+        }
+        
+        // Check if this therapist is already booked
+        const existingSessions = list.querySelectorAll('div[class*="bg-gradient"]');
+        let alreadyBooked = false;
+        existingSessions.forEach(session => {
+            if (session.textContent.includes(therapistName)) {
+                alreadyBooked = true;
+            }
+        });
+        
+        if (alreadyBooked) {
+            alert(`Session with ${therapistName} is already booked! 📅`);
+            return;
+        }
+        
+        // Create new session item
+        const sessionDiv = document.createElement("div");
+        sessionDiv.className = "bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-xl border border-green-200 shadow-sm animate-fade-in";
+        
+        // Get current date for display
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const dateStr = tomorrow.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        const timeStr = '10:00 AM'; // Default time
+        
+        sessionDiv.innerHTML = `
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-1">🧑‍⚕️ ${therapistName}</h3>
+                    <p class="text-sm text-gray-600">${dateStr} at ${timeStr}</p>
+                </div>
+                <span class="text-xs px-3 py-1 rounded-full font-medium bg-green-100 text-green-800">
+                    Confirmed
+                </span>
+            </div>
+        `;
+        
+        list.appendChild(sessionDiv);
+        
+        // Show success message
+        showSuccessMessage(`✅ Session booked with ${therapistName}!`);
+    }
+    
+    function bookSessionFromForm() {
+        const therapistSelect = document.getElementById("therapistSelect");
+        const sessionDate = document.getElementById("sessionDate");
+        const sessionTime = document.getElementById("sessionTime");
+        
+        const therapist = therapistSelect.value;
+        const date = sessionDate.value;
+        const time = sessionTime.value;
+        
+        if (!therapist) {
+            alert("Please select a therapist 📋");
+            return;
+        }
+        
+        if (!date) {
+            alert("Please select a date 📅");
+            return;
+        }
+        
+        if (!time) {
+            alert("Please select a time ⏰");
+            return;
+        }
+        
+        const list = document.getElementById("upcomingSessions");
+        
+        // Remove the "no sessions" message if it exists
+        const noSessionsMsg = list.querySelector('.text-center');
+        if (noSessionsMsg && noSessionsMsg.textContent.includes('No sessions booked')) {
+            noSessionsMsg.remove();
+        }
+        
+        // Check if this therapist is already booked
+        const existingSessions = list.querySelectorAll('div[class*="bg-gradient"]');
+        let alreadyBooked = false;
+        existingSessions.forEach(session => {
+            if (session.textContent.includes(therapist)) {
+                alreadyBooked = true;
+            }
+        });
+        
+        if (alreadyBooked) {
+            alert(`Session with ${therapist} is already booked! 📅`);
+            return;
+        }
+        
+        // Create new session item
+        const sessionDiv = document.createElement("div");
+        sessionDiv.className = "bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-xl border border-green-200 shadow-sm animate-fade-in";
+        
+        // Format date
+        const dateObj = new Date(date);
+        const dateStr = dateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        
+        sessionDiv.innerHTML = `
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-1">🧑‍⚕️ ${therapist}</h3>
+                    <p class="text-sm text-gray-600">${dateStr} at ${time}</p>
+                </div>
+                <span class="text-xs px-3 py-1 rounded-full font-medium bg-green-100 text-green-800">
+                    Confirmed
+                </span>
+            </div>
+        `;
+        
+        list.appendChild(sessionDiv);
+        
+        // Reset form
+        therapistSelect.value = "";
+        sessionDate.value = "";
+        sessionTime.value = "";
+        
+        // Show success message
+        showSuccessMessage(`✅ Session booked with ${therapist}!`);
+    }
+    
+    function showSuccessMessage(message) {
+        const successMsg = document.createElement("div");
+        successMsg.className = "fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-in";
+        successMsg.textContent = message;
+        document.body.appendChild(successMsg);
+        
+        // Remove success message after 3 seconds
+        setTimeout(() => {
+            successMsg.style.opacity = "0";
+            successMsg.style.transition = "opacity 0.5s";
+            setTimeout(() => successMsg.remove(), 500);
+        }, 3000);
+    }
+</script>
+<style>
+    @keyframes slide-in {
+        from { 
+            opacity: 0; 
+            transform: translateX(100px); 
+        }
+        to { 
+            opacity: 1; 
+            transform: translateX(0); 
+        }
+    }
+    .animate-slide-in {
+        animation: slide-in 0.4s ease-out;
+    }
+</style>
+{% endblock %}

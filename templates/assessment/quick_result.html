@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+{% load assessment_tags %}
+
+{% block title %}Assessment Results - MindCheck{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-4">Your Assessment Results</h1>
+        <p class="text-lg text-gray-600">Based on your responses, here are your personalized recommendations</p>
+    </div>
+    
+    <!-- Risk Level Card -->
+    <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+        <div class="text-center">
+            <div class="inline-flex items-center px-6 py-3 rounded-full text-lg font-semibold mb-4
+                {% if assessment.risk_level == 'low' %}bg-green-100 text-green-800
+                {% elif assessment.risk_level == 'moderate' %}bg-yellow-100 text-yellow-800
+                {% else %}bg-red-100 text-red-800{% endif %}">
+                {% if assessment.risk_level == 'low' %}
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Low Risk
+                {% elif assessment.risk_level == 'moderate' %}
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                    </svg>
+                    Moderate Risk
+                {% else %}
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    High Risk
+                {% endif %}
+            </div>
+            
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                {% if assessment.risk_level == 'low' %}
+                    You're doing well!
+                {% elif assessment.risk_level == 'moderate' %}
+                    Some areas for improvement
+                {% else %}
+                    Professional support recommended
+                {% endif %}
+            </h2>
+            
+            <p class="text-lg text-gray-600 mb-6">
+                {% if assessment.risk_level == 'low' %}
+                    Your responses suggest you're managing your mental health well. Keep up the good work!
+                {% elif assessment.risk_level == 'moderate' %}
+                    Your responses suggest there are some areas where you could benefit from additional support.
+                {% else %}
+                    Your responses suggest you may benefit from professional mental health support. Please consider reaching out for help.
+                {% endif %}
+            </p>
+            
+            <div class="text-sm text-gray-500">
+                Assessment completed on {{ assessment.completed_at|date:"F j, Y" }} at {{ assessment.completed_at|time:"g:i A" }}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recommendations -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <!-- Self-Care Tips -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                <svg class="w-6 h-6 text-teal-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+                Self-Care Recommendations
+            </h3>
+            <ul class="space-y-3">
+                {% if assessment.risk_level == 'low' %}
+                    <li class="flex items-start space-x-3">
+                        <svg class="w-5 h-5 text-green-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700">Continue your current self-care practices</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <svg class="w-5 h-5 text-green-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700">Maintain regular sleep and exercise routines</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <svg class="w-5 h-5 text-green-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700">Stay connected with friends and family</span>
+                    </li>
+                {% elif assessment.risk_level == 'moderate' %}
+                    <li class="flex items-start space-x-3">
+                        <svg class="w-5 h-5 text-yellow-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700">Practice stress management techniques</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <svg class="w-5 h-5 text-yellow-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700">Maintain a regular sleep schedule</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <svg class="w-5 h-5 text-yellow-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700">Engage in activities you enjoy</span>
+                    </li>
+                {% else %}
+                    <li class="flex items-start space-x-3">
+                        <svg class="w-5 h-5 text-red-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700">Contact a mental health professional immediately</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <svg class="w-5 h-5 text-red-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700">Reach out to a trusted friend or family member</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <svg class="w-5 h-5 text-red-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700">Consider crisis support resources</span>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+        
+        <!-- Resources -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                <svg class="w-6 h-6 text-teal-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+                Recommended Resources
+            </h3>
+            <div class="space-y-4">
+                <a href="{% url 'resources:resource_list' %}" class="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                    <h4 class="font-semibold text-gray-900">Mental Health Resources</h4>
+                    <p class="text-sm text-gray-600">Articles, guides, and tools for mental wellness</p>
+                </a>
+                
+                {% if assessment.risk_level == 'high' %}
+                <a href="{% url 'resources:crisis' %}" class="block p-4 border border-red-200 rounded-lg hover:bg-red-50 transition-colors">
+                    <h4 class="font-semibold text-red-900">Crisis Support</h4>
+                    <p class="text-sm text-red-600">24/7 helplines and emergency resources</p>
+                </a>
+                {% endif %}
+                
+                <a href="{% url 'resources:faq' %}" class="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                    <h4 class="font-semibold text-gray-900">Frequently Asked Questions</h4>
+                    <p class="text-sm text-gray-600">Common questions about mental health</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Action Buttons -->
+    <div class="text-center space-y-4">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            {% if not user.is_authenticated %}
+            <a href="{% url 'accounts:signup' %}" class="px-8 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-semibold">
+                Create Account to Track Progress
+            </a>
+            {% endif %}
+            <a href="{% url 'assessment:quick_assessment' %}" class="px-8 py-3 border border-teal-600 text-teal-600 rounded-lg hover:bg-teal-50 transition-colors font-semibold">
+                Take Another Assessment
+            </a>
+            <a href="{% url 'core:home' %}" class="px-8 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold">
+                Return to Home
+            </a>
+        </div>
+        
+        {% if assessment.risk_level == 'high' %}
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 mt-6">
+            <div class="flex items-center space-x-3">
+                <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <div>
+                    <h4 class="font-semibold text-red-900">Need Immediate Help?</h4>
+                    <p class="text-sm text-red-800">
+                        If you're experiencing a mental health crisis, please contact:
+                        <br><strong>988 Suicide & Crisis Lifeline:</strong> 988
+                        <br><strong>Crisis Text Line:</strong> Text HOME to 741741
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
